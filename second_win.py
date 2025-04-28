@@ -7,19 +7,7 @@ from PyQt5.QtWidgets import (
         QPushButton, QLabel, QListWidget, QLineEdit)
 
 from instr import *
-from second_win import *        
-
-class Person():
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-class Experiment():
-    def __init__(self, person, test1, test2, test3):
-        self.person = person
-        self.test1 = test1
-        self.test2 = test2
-        self.test3 = test3
+from final_win import *        
 
 class TestWin(QWidget):
     def __init__(self):
@@ -33,31 +21,60 @@ class TestWin(QWidget):
 
         self.show()
 
-        
+    def next_Click(self):
+        self.tw = TestWin()
+        self.hide()
 
+    def connects(self):
+        self.btn_next.clicked.connect(self.next_click)
 
-win_x, win_y = 200, 100
-win_width, win_height = 1000, 600
+    def set_appear(self):
+        self.setWhatsTitle(txt_title)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
 
-txt_hello = ''
-txt_next = ''
-txt_instruction = '' 
-txt_title = ''
-txt_name = 'Введите ФИО:'
-txt_hintname = ""
-txt_hintage = "Полных лет:"
-txt_test1 = ''
-txt_test2 = ''
-txt_test3 = ''
-txt_sendresults = ''
-txt_hinttest1 = '0'
-txt_hinttest2 = '0'
-txt_hinttest3 = '0'
-txt_starttest1 = ''
-txt_starttest2 = ''
-txt_starttest3 = ''
+    def initUI(self):
+        self.questionnary = AllQuestions()
+        self.btn_next = QPushButton(txt_sendresult, self)
+        self.btn_test1 = QPushButton(txt_starttest1, self)
+        self.btn_test2 = QPushButton(txt_starttest2, self)
+        self.btn_test3 = QPushButton(txt_starttest3, self)
 
-txt_age = 'Полных лет:'
-txt_finalwin = ''
-txt_index = ''
-txt_workheart = ''
+        self.text_name = QLabel(txt_name)
+        self.text_age = QLabel(txt_age)
+        self.text_test1 = QLabel(txt_test1)
+        self.text_test2 = QLabel(txt_test2)
+        self.text_test3 = QLabel(txt_test3)
+        self.text_timer = QLabel(txt_timer)
+
+        self.line_name = QLabelEdit(txt_hintname)
+
+        self.line_age = QLineEdit(txt_hintage)
+
+        self.line_test1 = QLineEdit(txt_hinttest1)
+
+        self.line_test2 = QLineEdit(txt_hinttest2)
+
+        self.line_test3 = QLineEdit(txt_hinttest3)
+
+        self.l_line = QVBoxLayout()
+        self.r_line = QVBoxLayout()
+        self.h_line = QVBoxLayout()
+        self.r_line.addWidget(self.text_timer, alignment = Qt.AlignCenter)
+        self.l_line.addWidget(self.text_name, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_name, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.text_age, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.line_age, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.text_test1, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.btn_test1, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.line_test1, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.text_test2, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.btn_test2, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.text_test3, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.btn_test3, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.line_test2, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.btn_test3, alignment = Qt.Alignleft)
+        self.l_line.addWidget(self.btn_next, alignment = Qt.AlignCenter)
+        self.h_line.addLayout(self.l_line)
+        self.h_line.addLayout(self.r_line)
+        self.setLayout(self.h_line)
