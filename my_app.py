@@ -1,32 +1,26 @@
-from PyQt5.QtCore import Qt, QTimer, QTime, QLocale
-from PyQt5.QtGui import QDoudleValidator, QIntValidator, QFont
-from PyQt5.QtWidgets import(
-        QApplication, QWidget,
-        QHBoxLayout, QVBoxLayout, QGridLayout,
-        QGroupBox, QRadioButton,
-        QPushButton, QLabel, QListView, QLineEdit)
 
+win_x, win_y = 200, 100
+win_width, win_height = 1000, 600
 
-from instr import *
-from second_win import *
+txt_hello = ''
+txt_next = ''
+txt_instruction = '' 
+txt_title = ''
+txt_name = ''
+txt_hintname = ""
+txt_hintage = ""
+txt_test1 = ''
+txt_test2 = ''
+txt_test3 = ''
+txt_sendresults = ''
+txt_hinttest1 = '0'
+txt_hinttest2 = '0'
+txt_hinttest3 = '0'
+txt_starttest1 = ''
+txt_starttest2 = ''
+txt_starttest3 = ''
 
-
-
-
-class MainWin(QWidget):
-    def __init__(self):
-        ssuper().__init__()
-
-
-        self.initUI()
-
-        self.connects()
-
-
-        self.set_appear()
-
-        self.show()
-
-    def initUI(self):
-        self.dtn_next = QPushButton(txt_next, self)
-        self.hello_text = QLabel(txt_hello)
+txt_age = ''
+txt_finalwin = ''
+txt_index = ''
+txt_workheart = ''
